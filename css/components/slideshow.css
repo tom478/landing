@@ -1,0 +1,52 @@
+#slideshow {
+	position: relative;    /*le parent positionné*/
+	width: 150px;          /*limite en largeur (1 élément du slideshow)*/
+	height: 150px;         /*limite en hauteur*/
+	margin: 30px;
+	overflow: hidden;      /*on cache ce qui déborde*/
+}
+#sContent {
+	position: absolute;   /*on sort l'élément du flux*/
+	top: 0;               /*on le positionne précisément dans ...*/
+	left: 0;              /*l'angle haut gauche de son parent positionné*/
+	width: 300%;         /*ou 300% car 3 éléments*/
+	margin: 0;            
+	padding: 0;
+	z-index: 10;
+	
+	/*CSS3 transition*/
+        -webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+}
+#sContent li {
+	display: inline;      /*on aligne les éléments du slideshow*/
+}
+
+#slideshow .next, #slideshow .prev {
+	position: absolute;
+	top: 65px;
+	z-index: 20;
+}
+#slideshow .prev { left: 0; }
+#slideshow .next { right: 0; }
+
+/* initialisation */
+#slideshow .next, #slideshow .prev { display: none; }
+#slideshow .next1 { display: block; }
+
+/* Vers 1ère étape */
+#s1:target #sContent { left: 0px; }
+#s1:target .next, #s1:target .prev { display: none; }
+#s1:target .next1 { display: block; }
+
+/* Vers 2ème étape */
+#s2:target #sContent { left: -500px; } /*ou -100%*/
+#s2:target .next, #s2:target .prev { display: none; }
+#s2:target .next2, #s2:target .prev2 { display: block; }
+
+/* Vers 3ème étape */
+#s3:target #sContent { left: -1000px; } /*ou -200%*/
+#s3:target .next, #s3:target .prev { display: none; }
+#s3:target .prev3 { display: block; }
